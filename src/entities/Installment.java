@@ -1,6 +1,7 @@
 package entities;
 //import
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 
 public class Installment {
@@ -8,6 +9,8 @@ public class Installment {
 	private LocalDate date;
 	private Double amount;
 	
+	private static DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
 	//Métodos
 	public void setDate(LocalDate date) {
 		this.date = date;
@@ -23,6 +26,12 @@ public class Installment {
 	
 	public Double getAmount() {
 		return amount;
+	}
+	
+	@Override
+	public String toString() {
+		return date.format(fmt) + " - "
+				    + String.format("%.2f", amount);
 	}
 	
 	// Construtor
